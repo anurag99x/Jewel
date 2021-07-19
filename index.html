@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewellery Store</title>
+    <style>
+        button{
+            width: 100px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id = "myForm">
+        <input type="number" id="price" placeholder="price">
+        <input type="text" id="img" placeholder="image url">
+    </form>
+
+    <button onclick="addProducts()">Add Product</button>
+    <!-- <button onclick=""></button> -->
+
+    <div id="data"></div>
+
+    <button onclick="pro()">Product Page</button>
+
+</body>
+</html>
+
+<script>
+    function pro(){
+        window.location.href = 'products.html';
+    }
+
+    function addProducts(){
+    let form = document.getElementById('myForm');
+
+    let price = form.price.value;
+    let image = form.img.value;
+
+    let product = {
+        image : image,
+        price : price
+    };
+
+    let arr;
+
+    arr = localStorage.getItem('products');
+
+    if(arr == null){
+        arr = [];
+    }else{
+        arr = JSON.parse(localStorage.getItem('products'));
+    }
+
+    arr.push(product);
+
+    localStorage.setItem('products',JSON.stringify(arr));
+}
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        #sel{
+            position: absolute;
+            top : 40%;
+            left: 40%;
+        }
+        #n{
+            font-size: 30px;
+        }
+        input{
+            font-size: 30px;
+        }
+        input:hover{
+            transform: scaleY(1.1);
+        }
+        button{
+            position: relative;
+            display: block;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sel">
+        <select name="Cards" id="n">
+            <option value="">Debit Card</option>
+            <option value="">Credit Card</option>
+        </select>
+        <input type="text" placeholder="CardDetails">
+        <button>Place Order</button>
+    </div>    
+</body>
+</html>
+<script>
+    var btn = document.querySelector('button');
+
+    btn.addEventListener('click',function(){
+        setTimeout(function(){
+            alert('YOUR ORDER IS SUCCESSFULLY PLACED')
+        },3000)
+    })
+</script>

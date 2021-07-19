@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        #in{
+            position: absolute;
+            top: 40%;
+            left: 40%;
+        }
+        input{
+            font-size: 30px;
+        }
+        input:hover{
+            transform: scaleY(1.1);
+        }
+        button{
+            font-size: 30px;
+        }
+        button:hover{
+            background-color: green;
+            color: white;
+        }
+        button:hover{
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 5px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="in">
+        <input type="text" id="add" placeholder="Address">
+        <button id="btn">ADD</button>
+        <button onclick="l()">PAYMENT</button>
+    </div>
+</body>
+</html>
+<script>
+    var inp = document.getElementById('add').value;
+    var btn = document.querySelector('#btn');
+    var name = 'Yes';
+    btn.addEventListener('click',function(){
+       prompt('Address Added',"Type yes or no")
+       if(name == 'Yes'){
+           window.location.href = 'payment.html';
+       }else{
+            window.location.href = 'checkout.html';
+
+       }
+    })
+
+    function l(){
+        window.location.href = 'payment.html';
+    }
+</script>

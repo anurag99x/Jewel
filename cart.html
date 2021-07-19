@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        #countpara{
+            width: 200px;
+            height: 5px;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        #tp{
+            color: red;
+            margin-top: 50px;
+        }
+        #tpp{
+            color: green;
+        }
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <p id="countpara">
+        Number of items :
+    </p>
+
+    <p id="tp">Total price : ₹ </p>
+    <p id="tpp">After discount : ₹ </p>
+
+
+    <div id="data"></div>
+
+    <input type="text" id="input" placeholder="coupon-code">
+    <button onclick="getPromo()">Apply Promo</button>
+
+    <button onclick="checkout()">Checkout</button>
+
+</body>
+</html>
+<script>
+    function checkout(){
+    window.location.href = 'checkout.html'
+}
+    let cart = JSON.parse(localStorage.getItem('cart'));
+
+    function showCPro(){
+    var data = document.getElementById('data');
+    var countpara = document.getElementById('countpara');
+    var tp = document.getElementById('tp');
+
+    var count = 0;
+    var totalPrice = 0;
+
+    cart.forEach(el => {
+        var div = document.createElement('div');
+        //console.log(para);
+        
+        count++;
+        let c = 0;
+        var p_price = document.createElement('p');
+        p_price.innerHTML = `Price : ₹ ${el.price}`;
+        p_price.setAttribute('id',c);
+        p_price.style.color = 'white';
+        var p_image = document.createElement('img');
+        p_image.src = el.image;
+
+        totalPrice += parseInt(el.price);
+
+        div.append(p_price,p_image);
+
+        data.append(div);
+
+    });
+
+    countpara.append(count);
+
+    tp.append(totalPrice);
+
+}
+
+showCPro();
+
+var newTotal = 0;
+
+function getPromo(){
+    var cart_data = JSON.parse(localStorage.getItem('cart'));
+    var input = document.getElementById('input').value;
+    var tpp = document.getElementById('tpp');
+
+    //console.log(newTotal);
+
+    cart_data.forEach(el => {
+        newTotal += parseInt(el.price);
+    })
+
+    //console.log(newTotal);
+
+    if(input == 'masai30'){
+        newTotal = 0.3*newTotal;
+    }
+
+    tpp.append(newTotal);
+}
+
+</script>
